@@ -416,12 +416,29 @@ void C2D_DrawText(const C2D_Text* text, u32 flags, float x, float y, float z, fl
 				}
 
 				C2Di_SetTex(cur->sheet);
-				C2Di_Update();
-				C2Di_AppendQuad();
-				C2Di_AppendVtx(glyphX,        glyphY,        glyphZ, cur->texcoord.left,  cur->texcoord.top,    0.0f, 1.0f, color);
-				C2Di_AppendVtx(glyphX+glyphW, glyphY,        glyphZ, cur->texcoord.right, cur->texcoord.top,    0.0f, 1.0f, color);
-				C2Di_AppendVtx(glyphX,        glyphY+glyphH, glyphZ, cur->texcoord.left,  cur->texcoord.bottom, 0.0f, 1.0f, color);
-				C2Di_AppendVtx(glyphX+glyphW, glyphY+glyphH, glyphZ, cur->texcoord.right, cur->texcoord.bottom, 0.0f, 1.0f, color);
+				if (flags & C2D_OutLine)
+				{
+					C2Di_Update();
+					C2Di_AppendQuad();
+					C2Di_AppendVtx(glyphX,        glyphY,        glyphZ, cur->texcoord.left,  cur->texcoord.top,    0.0f, 1.0f, 0xFF000000);
+					C2Di_AppendVtx(glyphX+glyphW, glyphY,        glyphZ, cur->texcoord.right, cur->texcoord.top,    0.0f, 1.0f, 0xFF000000);
+					C2Di_AppendVtx(glyphX,        glyphY+glyphH, glyphZ, cur->texcoord.left,  cur->texcoord.bottom, 0.0f, 1.0f, 0xFF000000);
+					C2Di_AppendVtx(glyphX+glyphW, glyphY+glyphH, glyphZ, cur->texcoord.right, cur->texcoord.bottom, 0.0f, 1.0f, 0xFF000000);
+					C2Di_Update();
+					C2Di_AppendQuad();
+					C2Di_AppendVtx((glyphX-glyphW*0.25), (glyphY+glyphH*0.25), glyphZ, cur->texcoord.left,  cur->texcoord.top,    0.0f, 1.0f, 0xFFFFFFFF);
+					C2Di_AppendVtx((glyphX-glyphW*0.25)+(glyphW*1.5), (glyphY+glyphH*0.25), glyphZ, cur->texcoord.right, cur->texcoord.top,    0.0f, 1.0f, 0xFFFFFFFF);
+					C2Di_AppendVtx((glyphX-glyphW*0.25), (glyphY+glyphH*0.25)+(glyphH*1.5), glyphZ, cur->texcoord.left,  cur->texcoord.bottom, 0.0f, 1.0f, 0xFFFFFFFF);
+					C2Di_AppendVtx((glyphX-glyphW*0.25)+(glyphW*1.5), (glyphY+glyphH*0.25)+(glyphH*1.5), glyphZ, cur->texcoord.right, cur->texcoord.bottom, 0.0f, 1.0f, 0xFFFFFFFF);
+				}
+				else {
+					C2Di_Update();
+					C2Di_AppendQuad();
+					C2Di_AppendVtx(glyphX,        glyphY,        glyphZ, cur->texcoord.left,  cur->texcoord.top,    0.0f, 1.0f, color);
+					C2Di_AppendVtx(glyphX+glyphW, glyphY,        glyphZ, cur->texcoord.right, cur->texcoord.top,    0.0f, 1.0f, color);
+					C2Di_AppendVtx(glyphX,        glyphY+glyphH, glyphZ, cur->texcoord.left,  cur->texcoord.bottom, 0.0f, 1.0f, color);
+					C2Di_AppendVtx(glyphX+glyphW, glyphY+glyphH, glyphZ, cur->texcoord.right, cur->texcoord.bottom, 0.0f, 1.0f, color);
+				}
 			}
 			break;
 		case C2D_AlignRight:
@@ -447,12 +464,29 @@ void C2D_DrawText(const C2D_Text* text, u32 flags, float x, float y, float z, fl
 				}
 
 				C2Di_SetTex(cur->sheet);
-				C2Di_Update();
-				C2Di_AppendQuad();
-				C2Di_AppendVtx(glyphX,        glyphY,        glyphZ, cur->texcoord.left,  cur->texcoord.top,    0.0f, 1.0f, color);
-				C2Di_AppendVtx(glyphX+glyphW, glyphY,        glyphZ, cur->texcoord.right, cur->texcoord.top,    0.0f, 1.0f, color);
-				C2Di_AppendVtx(glyphX,        glyphY+glyphH, glyphZ, cur->texcoord.left,  cur->texcoord.bottom, 0.0f, 1.0f, color);
-				C2Di_AppendVtx(glyphX+glyphW, glyphY+glyphH, glyphZ, cur->texcoord.right, cur->texcoord.bottom, 0.0f, 1.0f, color);
+				if (flags & C2D_OutLine)
+				{
+					C2Di_Update();
+					C2Di_AppendQuad();
+					C2Di_AppendVtx(glyphX,        glyphY,        glyphZ, cur->texcoord.left,  cur->texcoord.top,    0.0f, 1.0f, 0xFF000000);
+					C2Di_AppendVtx(glyphX+glyphW, glyphY,        glyphZ, cur->texcoord.right, cur->texcoord.top,    0.0f, 1.0f, 0xFF000000);
+					C2Di_AppendVtx(glyphX,        glyphY+glyphH, glyphZ, cur->texcoord.left,  cur->texcoord.bottom, 0.0f, 1.0f, 0xFF000000);
+					C2Di_AppendVtx(glyphX+glyphW, glyphY+glyphH, glyphZ, cur->texcoord.right, cur->texcoord.bottom, 0.0f, 1.0f, 0xFF000000);
+					C2Di_Update();
+					C2Di_AppendQuad();
+					C2Di_AppendVtx((glyphX-glyphW*0.25), (glyphY+glyphH*0.25), glyphZ, cur->texcoord.left,  cur->texcoord.top,    0.0f, 1.0f, 0xFFFFFFFF);
+					C2Di_AppendVtx((glyphX-glyphW*0.25)+(glyphW*1.5), (glyphY+glyphH*0.25), glyphZ, cur->texcoord.right, cur->texcoord.top,    0.0f, 1.0f, 0xFFFFFFFF);
+					C2Di_AppendVtx((glyphX-glyphW*0.25), (glyphY+glyphH*0.25)+(glyphH*1.5), glyphZ, cur->texcoord.left,  cur->texcoord.bottom, 0.0f, 1.0f, 0xFFFFFFFF);
+					C2Di_AppendVtx((glyphX-glyphW*0.25)+(glyphW*1.5), (glyphY+glyphH*0.25)+(glyphH*1.5), glyphZ, cur->texcoord.right, cur->texcoord.bottom, 0.0f, 1.0f, 0xFFFFFFFF);
+				}
+				else {
+					C2Di_Update();
+					C2Di_AppendQuad();
+					C2Di_AppendVtx(glyphX,        glyphY,        glyphZ, cur->texcoord.left,  cur->texcoord.top,    0.0f, 1.0f, color);
+					C2Di_AppendVtx(glyphX+glyphW, glyphY,        glyphZ, cur->texcoord.right, cur->texcoord.top,    0.0f, 1.0f, color);
+					C2Di_AppendVtx(glyphX,        glyphY+glyphH, glyphZ, cur->texcoord.left,  cur->texcoord.bottom, 0.0f, 1.0f, color);
+					C2Di_AppendVtx(glyphX+glyphW, glyphY+glyphH, glyphZ, cur->texcoord.right, cur->texcoord.bottom, 0.0f, 1.0f, color);
+				}
 			}
 		}
 		break;
@@ -479,12 +513,29 @@ void C2D_DrawText(const C2D_Text* text, u32 flags, float x, float y, float z, fl
 				}
 
 				C2Di_SetTex(cur->sheet);
-				C2Di_Update();
-				C2Di_AppendQuad();
-				C2Di_AppendVtx(glyphX,        glyphY,        glyphZ, cur->texcoord.left,  cur->texcoord.top,    0.0f, 1.0f, color);
-				C2Di_AppendVtx(glyphX+glyphW, glyphY,        glyphZ, cur->texcoord.right, cur->texcoord.top,    0.0f, 1.0f, color);
-				C2Di_AppendVtx(glyphX,        glyphY+glyphH, glyphZ, cur->texcoord.left,  cur->texcoord.bottom, 0.0f, 1.0f, color);
-				C2Di_AppendVtx(glyphX+glyphW, glyphY+glyphH, glyphZ, cur->texcoord.right, cur->texcoord.bottom, 0.0f, 1.0f, color);
+				if (flags & C2D_OutLine)
+				{
+					C2Di_Update();
+					C2Di_AppendQuad();
+					C2Di_AppendVtx(glyphX,        glyphY,        glyphZ, cur->texcoord.left,  cur->texcoord.top,    0.0f, 1.0f, 0xFF000000);
+					C2Di_AppendVtx(glyphX+glyphW, glyphY,        glyphZ, cur->texcoord.right, cur->texcoord.top,    0.0f, 1.0f, 0xFF000000);
+					C2Di_AppendVtx(glyphX,        glyphY+glyphH, glyphZ, cur->texcoord.left,  cur->texcoord.bottom, 0.0f, 1.0f, 0xFF000000);
+					C2Di_AppendVtx(glyphX+glyphW, glyphY+glyphH, glyphZ, cur->texcoord.right, cur->texcoord.bottom, 0.0f, 1.0f, 0xFF000000);
+					C2Di_Update();
+					C2Di_AppendQuad();
+					C2Di_AppendVtx((glyphX-glyphW*0.25), (glyphY+glyphH*0.25), glyphZ, cur->texcoord.left,  cur->texcoord.top,    0.0f, 1.0f, 0xFFFFFFFF);
+					C2Di_AppendVtx((glyphX-glyphW*0.25)+(glyphW*1.5), (glyphY+glyphH*0.25), glyphZ, cur->texcoord.right, cur->texcoord.top,    0.0f, 1.0f, 0xFFFFFFFF);
+					C2Di_AppendVtx((glyphX-glyphW*0.25), (glyphY+glyphH*0.25)+(glyphH*1.5), glyphZ, cur->texcoord.left,  cur->texcoord.bottom, 0.0f, 1.0f, 0xFFFFFFFF);
+					C2Di_AppendVtx((glyphX-glyphW*0.25)+(glyphW*1.5), (glyphY+glyphH*0.25)+(glyphH*1.5), glyphZ, cur->texcoord.right, cur->texcoord.bottom, 0.0f, 1.0f, 0xFFFFFFFF);
+				}
+				else {
+					C2Di_Update();
+					C2Di_AppendQuad();
+					C2Di_AppendVtx(glyphX,        glyphY,        glyphZ, cur->texcoord.left,  cur->texcoord.top,    0.0f, 1.0f, color);
+					C2Di_AppendVtx(glyphX+glyphW, glyphY,        glyphZ, cur->texcoord.right, cur->texcoord.top,    0.0f, 1.0f, color);
+					C2Di_AppendVtx(glyphX,        glyphY+glyphH, glyphZ, cur->texcoord.left,  cur->texcoord.bottom, 0.0f, 1.0f, color);
+					C2Di_AppendVtx(glyphX+glyphW, glyphY+glyphH, glyphZ, cur->texcoord.right, cur->texcoord.bottom, 0.0f, 1.0f, color);
+				}
 			}
 		}
 		break;
@@ -551,12 +602,29 @@ void C2D_DrawText(const C2D_Text* text, u32 flags, float x, float y, float z, fl
 				float glyphY = y + dispY*words[consecutiveWordNum].newLineNumber;
 
 				C2Di_SetTex(cur->sheet);
-				C2Di_Update();
-				C2Di_AppendQuad();
-				C2Di_AppendVtx(glyphX,        glyphY,        glyphZ, cur->texcoord.left,  cur->texcoord.top,    0.0f, 1.0f, color);
-				C2Di_AppendVtx(glyphX+glyphW, glyphY,        glyphZ, cur->texcoord.right, cur->texcoord.top,    0.0f, 1.0f, color);
-				C2Di_AppendVtx(glyphX,        glyphY+glyphH, glyphZ, cur->texcoord.left,  cur->texcoord.bottom, 0.0f, 1.0f, color);
-				C2Di_AppendVtx(glyphX+glyphW, glyphY+glyphH, glyphZ, cur->texcoord.right, cur->texcoord.bottom, 0.0f, 1.0f, color);
+				if (flags & C2D_OutLine)
+				{
+					C2Di_Update();
+					C2Di_AppendQuad();
+					C2Di_AppendVtx(glyphX,        glyphY,        glyphZ, cur->texcoord.left,  cur->texcoord.top,    0.0f, 1.0f, 0xFF000000);
+					C2Di_AppendVtx(glyphX+glyphW, glyphY,        glyphZ, cur->texcoord.right, cur->texcoord.top,    0.0f, 1.0f, 0xFF000000);
+					C2Di_AppendVtx(glyphX,        glyphY+glyphH, glyphZ, cur->texcoord.left,  cur->texcoord.bottom, 0.0f, 1.0f, 0xFF000000);
+					C2Di_AppendVtx(glyphX+glyphW, glyphY+glyphH, glyphZ, cur->texcoord.right, cur->texcoord.bottom, 0.0f, 1.0f, 0xFF000000);
+					C2Di_Update();
+					C2Di_AppendQuad();
+					C2Di_AppendVtx((glyphX-glyphW*0.25), (glyphY+glyphH*0.25), glyphZ, cur->texcoord.left,  cur->texcoord.top,    0.0f, 1.0f, 0xFFFFFFFF);
+					C2Di_AppendVtx((glyphX-glyphW*0.25)+(glyphW*1.5), (glyphY+glyphH*0.25), glyphZ, cur->texcoord.right, cur->texcoord.top,    0.0f, 1.0f, 0xFFFFFFFF);
+					C2Di_AppendVtx((glyphX-glyphW*0.25), (glyphY+glyphH*0.25)+(glyphH*1.5), glyphZ, cur->texcoord.left,  cur->texcoord.bottom, 0.0f, 1.0f, 0xFFFFFFFF);
+					C2Di_AppendVtx((glyphX-glyphW*0.25)+(glyphW*1.5), (glyphY+glyphH*0.25)+(glyphH*1.5), glyphZ, cur->texcoord.right, cur->texcoord.bottom, 0.0f, 1.0f, 0xFFFFFFFF);
+				}
+				else {
+					C2Di_Update();
+					C2Di_AppendQuad();
+					C2Di_AppendVtx(glyphX,        glyphY,        glyphZ, cur->texcoord.left,  cur->texcoord.top,    0.0f, 1.0f, color);
+					C2Di_AppendVtx(glyphX+glyphW, glyphY,        glyphZ, cur->texcoord.right, cur->texcoord.top,    0.0f, 1.0f, color);
+					C2Di_AppendVtx(glyphX,        glyphY+glyphH, glyphZ, cur->texcoord.left,  cur->texcoord.bottom, 0.0f, 1.0f, color);
+					C2Di_AppendVtx(glyphX+glyphW, glyphY+glyphH, glyphZ, cur->texcoord.right, cur->texcoord.bottom, 0.0f, 1.0f, color);
+				}
 			}
 		}
 		break;
