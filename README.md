@@ -1,7 +1,5 @@
 # citro2d
 
-**( ͡° ͜ʖ ͡°)**
-
 *Library for drawing 2D graphics using the Nintendo 3DS's PICA200 GPU.*
 
 This library contains optimized routines that allow 3DS homebrew developers to
