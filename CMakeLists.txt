@@ -4,6 +4,7 @@ project(citro2d
 	LANGUAGES C ASM
 )
 
+find_library(CITRO3D_LIBRARY NAMES citro3d)
 include(GNUInstallDirs)
 
 if(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
