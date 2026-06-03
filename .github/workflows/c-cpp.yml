@@ -21,4 +21,4 @@ jobs:
       with:
         name: Build
         path: |
-          lib/libcitro2d.a
+          libcitro2d.a
