@@ -17,14 +17,14 @@ endif
 #---------------------------------------------------------------------------------
 # ターゲットとコンパイラフラグ
 #---------------------------------------------------------------------------------
-LIBS     := -lcitro2d -lctru
+LIBS     := -lcitro3d -lctru
 # DEBUG=1 が指定された場合はデバッグビルド（ライブラリ名に'd'を追加）
 ifdef DEBUG
     TARGET   := libcitro2dd.a
-    CFLAGS   := -g -O0 -Wall -Werror -DCITRO2D_BUILD
+    CFLAGS   := -g -O0 -Wall -Werror -D__3DS__ -DCITRO2D_BUILD
 else
     TARGET   := libcitro2d.a
-    CFLAGS   := -O2 -Wall -Werror -DCITRO2D_BUILD
+    CFLAGS   := -O2 -Wall -Werror -D__3DS__ -DCITRO2D_BUILD
 endif
 
 # 3DSアーキテクチャ用フラグ (armv6k)
