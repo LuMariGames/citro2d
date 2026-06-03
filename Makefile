@@ -36,6 +36,7 @@ CC       := arm-none-eabi-gcc
 AR       := arm-none-eabi-gcc-ar
 PICASSO  := picasso
 BIN2S    := bin2s
+LIBDIRS  := $(CTRULIB)
 
 #---------------------------------------------------------------------------------
 # ソースファイルとオブジェクトファイルの定義
@@ -49,6 +50,10 @@ SRC_PICA := source/render2d.v.pica
 
 # 中間生成オブジェクト
 OBJS     := $(SRC_C:.c=.o) source/render2d.shbin.o
+
+export INCLUDE := $(foreach dir,$(INCLUDES),-I$(CURDIR)/$(dir)) \
+            $(foreach dir,$(LIBDIRS),-I$(dir)/include) \
+            -I.
 
 #---------------------------------------------------------------------------------
 # ビルドルール
