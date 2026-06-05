@@ -157,9 +157,9 @@ const char* C2D_TextFontParseLine(C2D_Text* text, C2D_Font font, C2D_TextBuf buf
 		} else if (code == 0 || code == '\n')
 		{
 			break;
-		} else if (code >= 0x1F000 && code < 0x1FA00)
+		} else if (code >= 0x1F000 && code < 0x1FB00)
 		{
-			code -= 0x10A00;
+			code -= 0x10E00;
 		}
 		p += units;
 
