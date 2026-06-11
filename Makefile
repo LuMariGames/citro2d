@@ -26,7 +26,7 @@ ifdef DEBUG
     CFLAGS   := -g -O0 -Wall -Werror -D__3DS__ -DCITRO2D_BUILD
 else
     TARGET   := libcitro2d.a
-    CFLAGS   := -O2 -Wall -Werror -D__3DS__ -DCITRO2D_BUILD
+    CFLAGS   := -O3 -Wall -Werror -D__3DS__ -DCITRO2D_BUILD
 endif
 
 # 3DSアーキテクチャ用フラグ (armv6k)
