@@ -398,7 +398,7 @@ void C2Di_CalcQuad(C2Di_Quad* quad, const C2D_DrawParams* params)
 	quad->botRight[1] += params->pos.y;
 }
 
-bool C2D_DrawImage(C2D_Image img, const C2D_DrawParams* params, const C2D_ImageTint* tint)
+bool C2D_DrawImage(C2D_Image& img, const C2D_DrawParams* params, const C2D_ImageTint* tint)
 {
 	if(-512.f>params->pos.x||params->pos.x>1024.f||-256.f>params->pos.y||params->pos.y>512.f)
 		return false;
