@@ -336,7 +336,7 @@ bool C2D_SetTintMode(C2D_TintMode mode);
  *  @param[in] tint Tint parameters to apply to the image (optional, can be null)
  *  @returns true on success, false on failure
  */
-bool C2D_DrawImage(C2D_Image img, const C2D_DrawParams* params, const C2D_ImageTint* tint C2D_OPTIONAL(nullptr));
+bool C2D_DrawImage(C2D_Image& img, const C2D_DrawParams* params, const C2D_ImageTint* tint C2D_OPTIONAL(nullptr));
 
 /** @brief Draws an image using the GPU (variant accepting position/scaling)
  *  @param[in] img Handle of the image to draw
